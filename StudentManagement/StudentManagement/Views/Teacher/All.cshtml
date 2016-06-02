@@ -1,0 +1,25 @@
+﻿@model IEnumerable<StudentManagement.ViewModels.StudentViewModel>
+
+@{
+    ViewBag.Title = "All";
+}
+<div>
+    @Html.ActionLink("添加学生", "AddStudent")
+</div>
+<div>
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Number</td>
+                <td>@item.Name</td>
+                <td>@item.ExerciseSumScore(item.Courses.FirstOrDefault(c=>c.Name==ViewBag.Course.Name))</td>
+                <td>@item.TestSumScore(item.Courses.FirstOrDefault(c=>c.Name==ViewBag.Course.Name))</td>
+                <td>@item.Exam.FirstOrDefault(e=>e.Course.Name==ViewBag.CourseName)</td>
+                <td>@item.Courses.FirstOrDefault(c=>c.Name==ViewBag.CourseName).Grade</td>
+                <td>@Html.ActionLink("修改", "UpdateStudent",new { studentId=item.StudentID})</td>
+                <td>@Html.ActionLink("删除", "DeleteStudent",new { studentId=item.StudentID})</td>
+            </tr>
+        }
+    </table>
+</div>

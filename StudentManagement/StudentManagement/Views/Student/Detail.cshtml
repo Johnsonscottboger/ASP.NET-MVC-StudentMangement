@@ -1,0 +1,44 @@
+﻿@model StudentManagement.ViewModels.StudentDetailViewModel
+
+@{
+    ViewBag.Title = "详细信息";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<h4 class="page-header text-left">
+    &nbsp;&nbsp;&nbsp;
+    @Html.DisplayNameFor(model=>model.Number):<strong>@Html.DisplayFor(model => model.Number)</strong> 
+    @Html.DisplayNameFor(model=>model.Name):<strong>@Html.DisplayFor(model => model.Name)</strong> 
+    @Html.DisplayNameFor(model=>model.CourseName):<strong>@Html.DisplayFor(model => model.CourseName)</strong> 
+</h4>
+
+<h3>练习分数</h3>
+<table class="table table-hover">
+    <tr>
+        @foreach (var exe_item in Model.ExerciseEveryScore())
+        {
+            <th><p class="text-center">第 @exe_item.Num 次</p></th>        
+        }
+    </tr>
+    <tr>
+        @foreach (var exe_item in Model.ExerciseEveryScore())
+        {
+            <td>@exe_item.Score</td>
+        }
+    </tr>
+</table>
+<h3>测试分数</h3>
+<table class="table table-hover">
+    <tr>
+        @foreach (var text_item in Model.TestEveryScore())
+        {
+            <th><p class="text-center">第 @text_item.Num 次</p></th>
+        }
+    </tr>
+    <tr>
+        @foreach (var text_item in Model.TestEveryScore())
+        {
+            <td>@text_item.Score</td>
+        }
+    </tr>
+</table>

@@ -1,0 +1,39 @@
+﻿@model StudentManagement.ViewModels.StudentPagingInfoViewModel
+@using StudentManagement.Helper
+
+<div class="divBody">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th><p class="text-center">@Html.DisplayNameFor(model => model.StudentViewModel.FirstOrDefault().Number)</p></th>
+                <th><p class="text-center">@Html.DisplayNameFor(model => model.StudentViewModel.FirstOrDefault().Name)</p></th>
+                <th><p class="text-center">@Html.DisplayNameFor(model => model.StudentViewModel.FirstOrDefault().Exercises)</p></th>
+                <th><p class="text-center">@Html.DisplayNameFor(model => model.StudentViewModel.FirstOrDefault().Tests)</p></th>
+                <th><p class="text-center">@Html.DisplayNameFor(model => model.StudentViewModel.FirstOrDefault().Exam)</p></th>
+                <th><p class="text-center">@Html.DisplayNameFor(model => model.StudentViewModel.FirstOrDefault().Grades)</p></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var stu_item in Model.StudentViewModel)
+            {
+                <tr>
+                    <td>@stu_item.Number</td>
+                    <td>@stu_item.Name</td>
+                    <td>@stu_item.ExerciseSumScore(ViewBag.Course)</td>
+                    <td>@stu_item.TestSumScore(ViewBag.Course)</td>
+                    <td>@stu_item.ExamScore(ViewBag.Course)</td>
+                    <td>@stu_item.GradeScore(ViewBag.Course)</td>
+                    <td>@Html.ActionLink("删除", "DeleteStudent", new { stu_item.StudentID, ViewBag.Course.ID })</td>
+                    <td>@Html.ActionLink("修改", "UpdateStudent", new { stu_item.StudentID, ViewBag.Course.ID })</td>
+                    <td>@Html.ActionLink("详细", "Detail", "Student", new { stu_item.StudentID, ViewBag.Course.ID }, new { @class = "link" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<nav>
+    <ul class="pagination">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", "Teacher", new { id = ViewBag.Course.ID, pageIndex = x }))
+    </ul>
+</nav>

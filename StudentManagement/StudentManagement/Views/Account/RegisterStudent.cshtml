@@ -1,0 +1,73 @@
+﻿@model StudentManagement.ViewModels.RegisterStudentViewModel
+
+@{
+    ViewBag.Title = "RegisterStudent";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>学生注册</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Number, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Number, TempData["Number"])
+                @Html.ValidationMessageFor(model => model.Number)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, TempData["Name"])
+                @Html.ValidationMessageFor(model => model.Number)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Password, TempData["Password"])
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.ConfirmPassword, TempData["ConfirmPassword"])
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model=>model.Courses, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @foreach(SelectListItem item in Model.Courses)
+                {
+                    var ischecked = "";
+                    if(item.Selected)
+                    {
+                        ischecked = "checked='checked'";
+                    }
+                    <input name="Courses" type="checkbox" value="@item.Value" @ischecked/>@item.Text
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="checkbox" checked="checked" required />我同意 <a href="#">《用户注册协议》</a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="注册" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

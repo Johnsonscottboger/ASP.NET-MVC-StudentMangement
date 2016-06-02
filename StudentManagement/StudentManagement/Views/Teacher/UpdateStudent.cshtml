@@ -1,0 +1,129 @@
+﻿@model StudentManagement.ViewModels.UpdateStudentViewModel
+
+@{
+    ViewBag.Title = "修改学生信息";
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+}
+
+<h4 class="page-header text-left">
+    &nbsp;&nbsp;&nbsp;
+    学生姓名：<strong>@ViewBag.Student.Name</strong> 课程：<strong>@ViewBag.Course.Name</strong>总成绩：<strong>@ViewBag.GradeScore</strong> 
+</h4>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <table>
+            <tr>
+                <td>@Html.DisplayNameFor(model=>model.Name)</td>
+                <td>@Html.TextBoxFor(model=>model.Name,new { @Value= Model.Name})@Html.ValidationMessageFor(model=>model.Name)</td>
+                <td>@Html.DisplayNameFor(model=>model.Number)</td>
+                <td>@Html.TextBoxFor(model=>model.Number,new { @Value= Model.Number})@Html.ValidationMessageFor(model=>model.Number)</td>
+            </tr>
+            <tr>
+                <td>各次习题成绩：</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ExeScore1)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore1, new { @Value = Model.ExeScore1 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore1)</td>
+
+                <td>@Html.DisplayNameFor(model => model.ExeScore2)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore2, new { @Value = Model.ExeScore2 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore2)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ExeScore3)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore3, new { @Value = Model.ExeScore3 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore3)</td>
+                
+                <td>@Html.DisplayNameFor(model => model.ExeScore4)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore4, new { @Value = Model.ExeScore4 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore4)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ExeScore5)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore5, new { @Value = Model.ExeScore5 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore5)</td>
+
+                <td>@Html.DisplayNameFor(model => model.ExeScore6)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore6, new { @Value = Model.ExeScore6 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore6)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ExeScore7)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore7, new { @Value = Model.ExeScore7 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore7)</td>
+
+                <td>@Html.DisplayNameFor(model => model.ExeScore8)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore8, new { @Value = Model.ExeScore8 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore8)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ExeScore9)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore9, new { @Value = Model.ExeScore9 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore9)</td>
+
+                <td>@Html.DisplayNameFor(model => model.ExeScore10)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore10, new { @Value = Model.ExeScore10 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore10)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ExeScore11)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore11, new { @Value = Model.ExeScore11 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore11)</td>
+
+                <td>@Html.DisplayNameFor(model => model.ExeScore12)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore12, new { @Value = Model.ExeScore12 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore12)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ExeScore13)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore13, new { @Value = Model.ExeScore13 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore13)</td>
+
+                <td>@Html.DisplayNameFor(model => model.ExeScore14)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore14, new { @Value = Model.ExeScore14 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore14)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ExeScore15)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore15, new { @Value = Model.ExeScore15 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore15)</td>
+
+                <td>@Html.DisplayNameFor(model => model.ExeScore16)</td>
+                <td>@Html.TextBoxFor(model => model.ExeScore16, new { @Value = Model.ExeScore16 })</td>
+                <td>@Html.ValidationMessageFor(model => model.ExeScore16)</td>
+            </tr>
+            <tr>
+                <td>各次测验成绩：</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.TestScore1)</td>
+                <td>@Html.TextBoxFor(model => model.TestScore1, new { @Value = Model.TestScore1 })</td>
+                <td>@Html.ValidationMessageFor(model => model.TestScore1)</td>
+
+                <td>@Html.DisplayNameFor(model => model.TestScore2)</td>
+                <td>@Html.TextBoxFor(model => model.TestScore2, new { @Value = Model.TestScore2 })</td>
+                <td>@Html.ValidationMessageFor(model => model.TestScore2)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.TestScore3)</td>
+                <td>@Html.TextBoxFor(model => model.TestScore3, new { @Value = Model.TestScore3 })</td>
+                <td>@Html.ValidationMessageFor(model => model.TestScore3)</td>
+            </tr>
+            <tr>
+                <td>考试成绩：</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ExamScore)</td>
+                <td>@Html.TextBoxFor(model => model.ExamScore, new { @Value = Model.ExamScore })</td>
+                <td>@Html.ValidationMessageFor(model=>model.ExamScore)</td>
+                <td></td>
+                <td>
+                    <input type="submit" class="btn btn-default" value="保存" />
+                </td>
+            </tr>
+        </table>
+    }
+</div>

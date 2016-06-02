@@ -1,0 +1,43 @@
+﻿@model StudentManagement.ViewModels.StudentViewModel
+
+@{
+    ViewBag.Title = "学生信息";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<h4 class="page-header text-left">
+    &nbsp;&nbsp;&nbsp;
+    @Html.DisplayNameFor(model => model.Number):@Html.DisplayFor(model => model.Number)
+    @Html.DisplayNameFor(model => model.Name):@Html.DisplayFor(model => model.Name)
+</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th><p class="text-center">序号</p></th>
+            <th><p class="text-center">@Html.DisplayNameFor(model => model.Courses)</p></th>
+            <th><p class="text-center">@Html.DisplayNameFor(model => model.Exercises)</p></th>
+            <th><p class="text-center">@Html.DisplayNameFor(model => model.Tests)</p></th>
+            <th><p class="text-center">@Html.DisplayNameFor(model => model.Exam)</p></th>
+            <th><p class="text-center">@Html.DisplayNameFor(model => model.Grades)</p></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Courses != null)
+            {
+                int i = 0;
+                foreach (var course_item in Model.Courses)
+                {
+                    i++;
+            <tr>
+                <td scope="row">@i </td>
+                <td>@course_item.Name</td>
+                <td>@Model.ExerciseSumScore(course_item)</td>
+                <td>@Model.TestSumScore(course_item)</td>
+                <td>@Model.ExamScore(course_item)</td>
+                <td>@Model.GradeScore(course_item)</td>
+                <td>@Html.ActionLink("详细", "Detail", new { Model.StudentID, course_item.ID })</td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>

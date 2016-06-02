@@ -1,0 +1,20 @@
+﻿@model IEnumerable<StudentManagement.ViewModels.StudentViewModel>
+
+@{
+    ViewBag.Title = "首页";
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+}
+
+<h4 class="page-header text-left">
+    &nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("添加学生", "AddStudent", new { id = ViewBag.TeacherId })
+    <br /><br />
+    &nbsp;&nbsp;&nbsp;
+    课程名：<strong>@ViewBag.Course.Name </strong> 教师：<strong>@ViewBag.TeacherName</strong> 学生人数：<strong>@ViewBag.Count</strong>
+</h4>
+
+@if(ViewBag.Count.ToString() != "没有学生")
+{
+   @* 加载分布视图 *@
+   @Html.Action("GetIndex", new { id = ViewBag.TeacherId ,pageIndex= ViewBag.PageIndex })
+}
