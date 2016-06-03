@@ -93,7 +93,12 @@ namespace StudentManagement.Controllers
                 int pageSize = 5;
                 int pageIndex = pageIndexNullable ?? 1;
 
-                List<StudentViewModel> resultList = stuVMs.Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList<StudentViewModel>();
+                //排序
+                List<StudentViewModel> resultList = stuVMs.OrderBy(p=>p.Number).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList<StudentViewModel>();
+                //List<StudentViewModel> resultList = stuVMs.OrderByDescending(p=>p.GradeScore(_course)).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList<StudentViewModel>();
+
+
+
 
                 //分页视图模型
                 StudentPagingInfoViewModel model = new StudentPagingInfoViewModel
