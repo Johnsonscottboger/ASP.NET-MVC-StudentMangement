@@ -122,6 +122,50 @@ namespace StudentManagement.Controllers
             }
         }
 
+        public ActionResult Print(int id)
+        {
+            //所教课程
+            Course _course = teacher.FindById(id).Course;
+            //选择此课程的所有学生
+            var _students = course.Find(c => c.ID == _course.ID).Students;
+
+
+            if (_students.Count() != 0)
+            {
+                IList<StudentViewModel> stuVMs = new List<StudentViewModel>();
+                foreach (var stu_item in _students)
+                {
+                    StudentViewModel stuVM = new StudentViewModel(stu_item)
+                    {
+                        StudentID = stu_item.StudentID,
+                        Number = stu_item.Number,
+                        Name = stu_item.Name,
+                        Password = stu_item.Password,
+                        Courses = stu_item.Courses,
+
+
+                        Exam = stu_item.Exam,
+                        Exercises = stu_item.Exercises,
+                        Tests = stu_item.Tests
+                    };
+                    stuVMs.Add(stuVM);
+                }
+
+
+                //排序
+                List<StudentViewModel> resultList = stuVMs.OrderBy(p => p.Number).ToList();
+                //List<StudentViewModel> resultList = stuVMs.OrderByDescending(p=>p.GradeScore(_course)).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList<StudentViewModel>();
+
+                ViewBag.Course = _course;
+                return View(resultList);
+            }
+            else
+            {
+                ViewBag.Course = _course;
+                return View();
+            }
+        }
+
         /// <summary>
         /// 添加学生信息
         /// </summary>
