@@ -29,8 +29,5 @@ namespace StudentManagement.Models
 
         [Display(Name ="学生")]
         public virtual ICollection<Student> Student { get; set; }
-        
-        //[Display(Name ="课程")]
-        //public virtual Course Course { get; set; }
     }
 }

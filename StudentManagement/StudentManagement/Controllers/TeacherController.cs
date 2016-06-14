@@ -211,11 +211,13 @@ namespace StudentManagement.Controllers
                 Course _course = course.Find(p => p.Teacher.ID == _teacherId);
 
                 //在课程中添加学生
-                _course.Students.Add(_student0);
+                _course.Students.Add(_student);
 
                 //再次查找操作的课程实体，保存更改
                 var c = course.Find(p => p.Teacher.ID == _teacherId);
                 course.Update(c);
+
+
 
 
                 return RedirectToAction("Index", new { id = _teacherId });
