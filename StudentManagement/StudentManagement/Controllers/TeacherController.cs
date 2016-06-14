@@ -192,7 +192,7 @@ namespace StudentManagement.Controllers
              * 这里与AccountController/RegisterStudent中的学生注册方式略不同
              * 学生注册中的_stu是一个全新的对象，所以不局限于任何context上下文对象。可任意存取
              */
-
+            
 
             if (ModelState.IsValid)
             {
@@ -205,11 +205,13 @@ namespace StudentManagement.Controllers
                     ModelState.AddModelError("", "添加的学生不存在");
                     return View();
                 }
+
+
                 //操作的课程
                 Course _course = course.Find(p => p.Teacher.ID == _teacherId);
 
                 //在课程中添加学生
-                _course.Students.Add(_student);
+                _course.Students.Add(_student0);
 
                 //再次查找操作的课程实体，保存更改
                 var c = course.Find(p => p.Teacher.ID == _teacherId);

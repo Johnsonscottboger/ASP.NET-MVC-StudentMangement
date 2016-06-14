@@ -57,8 +57,11 @@ namespace StudentManagement.Controllers
                             ModelState.AddModelError("Password", "密码错误");
                         }
                     }
+                    else
+                    {
+                        ModelState.AddModelError("", "用户不存在");
+                    }
                 }
-                ModelState.AddModelError("", "用户不存在");
             }
             return View();
         }
